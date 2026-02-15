@@ -168,10 +168,10 @@ vercel
 
 ## 📧 Contacto
 
-- **Email:** javiercastillo.5445@gmail.com
+- **Email:** onandyzacasa@hotmail.es
 - **GitHub:** [@JavierDvlpr](https://github.com/JavierDvlpr)
 - **LinkedIn:** [javiercastillodev](https://www.linkedin.com/in/javiercastillodev/)
-- **Teléfono:** +57 3054077706
+- **Teléfono:** +504 32098109
 
 ## 📄 Licencia
 

@@ -2,7 +2,7 @@
 
 Un portafolio moderno, responsive y bilingüe construido con **Astro** y **Tailwind CSS**. Presenta experiencia profesional, habilidades y proyectos como Desarrollador Full Stack.
 
-🌐 **Sitio en vivo:** [Ver Portafolio](https://javiercastillo.dev)
+🌐 **Sitio en vivo:** [Ver Portafolio](https://hesslero.github.io/)
 
 ## ✨ Características
 
@@ -58,7 +58,7 @@ portfolio/
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/JavierDvlpr/portfolio.git
+git clone
 cd portfolio
 ```
 
@@ -169,8 +169,8 @@ vercel
 ## 📧 Contacto
 
 - **Email:** onandyzacasa@hotmail.es
-- **GitHub:** [@JavierDvlpr](https://github.com/JavierDvlpr)
-- **LinkedIn:** [javiercastillodev](https://www.linkedin.com/in/javiercastillodev/)
+- **GitHub:** [@Hesslero](https://hesslero.github.io/)
+- **LinkedIn:** [Hesler Zacasa](https://www.linkedin.com/in/hesler-zacasa-524a34b9/?locale=en)
 - **Teléfono:** +504 32098109
 
 ## 📄 Licencia

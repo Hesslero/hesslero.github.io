@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import heroPhoto from '../assets/hesler.png';
+import badgeHr from '../assets/badges/Credential_Badge_-_Certified_Implementation_Specialist_-_Human_Resources.png';
+import badgeAdmin from '../assets/badges/Credential_Badge_-_Certified_System_Administrator.png';
+import badgeSFC from '../assets/badges/badge-SFC.png';
 
 const translations = {
   greeting: { 
@@ -40,6 +43,10 @@ const translations = {
   tech: { 
     en: "Tech Stack", 
     es: "Tecnologías" 
+  },
+  certifications: {
+    en: "Badges",
+    es: "Insignias"
   }
 };
 
@@ -160,6 +167,38 @@ const translations = {
 						<p class="text-sm font-medium text-gray-900 dark:text-white">Docker</p>
 					</div>
 				</div>
+			</div>
+		</section>
+
+		<section class="max-w-3xl mx-auto py-12 sm:py-16 border-t border-gray-200 dark:border-gray-700 parallax-section fade-in px-2 sm:px-0">
+			<h2
+				class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8"
+				data-en={translations.certifications.en}
+				data-es={translations.certifications.es}
+			>
+				{translations.certifications.en}
+			</h2>
+
+			<div class="flex flex-wrap gap-8 items-center justify-start">
+				<img
+					src={badgeHr.src}
+					alt="Certified Implementation Specialist - Human Resources"
+					class="h-28 sm:h-32 md:h-36 object-contain drop-shadow-md"
+					loading="lazy"
+				/>
+				<img
+					src={badgeAdmin.src}
+					alt="Certified System Administrator"
+					class="h-28 sm:h-32 md:h-36 object-contain drop-shadow-md"
+					loading="lazy"
+				/>
+				<img
+					src={badgeSFC.src}
+					alt="Service Fleet Certified"
+					class="h-28 sm:h-32 md:h-36 object-contain drop-shadow-md opacity-50"
+					loading="lazy"
+				/>
+
 			</div>
 		</section>
 	</main>

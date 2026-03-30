@@ -13,7 +13,17 @@ const projectFolders = Object.keys(esDescriptions).map(path => {
     return parts[parts.length - 2];
 });
 
-const projects = await Promise.all(projectFolders.map(async (folder) => {
+// List of project folders to show on the Projects page.
+// Edit this array to hide/show projects.
+const visibleProjectFolders = [
+    'SAIF',
+    'Tecpoint'
+    // 'rename', // example: uncomment to show this project
+];
+
+const filteredFolders = projectFolders.filter(folder => visibleProjectFolders.includes(folder));
+
+const projects = await Promise.all(filteredFolders.map(async (folder) => {
     const esPath = `../project-descriptions/${folder}/descripcion.md`;
     const enPath = `../project-descriptions/${folder}/descripcion.en.md`;
     

@@ -1,0 +1,12 @@
+exclude:
+  - src
+  - node_modules
+  - .astro
+  - .github
+  - .vscode
+  - astro.config.mjs
+  - package.json
+  - package-lock.json
+  - tsconfig.json
+  - README.md
+

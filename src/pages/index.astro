@@ -1,77 +1,101 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import heroAvatar from '../assets/hero-avatar.png';
-import badgeHr from '../assets/badges/Credential_Badge_-_Certified_Implementation_Specialist_-_Human_Resources.png';
-import badgeAdmin from '../assets/badges/Credential_Badge_-_Certified_System_Administrator.png';
-import badgeSFC from '../assets/badges/badge-SFC.png';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import heroAvatar from "../assets/hero-avatar.png";
+import badgeHr from "../assets/badges/Credential_Badge_-_Certified_Implementation_Specialist_-_Human_Resources.png";
+import badgeAdmin from "../assets/badges/Credential_Badge_-_Certified_System_Administrator.png";
+import badgeSFC from "../assets/badges/badge-SFC.png";
 
 const translations = {
-  greeting: { 
-    en: "Hello, I'm", 
-    es: "Hola, soy" 
-  },
-  name: { 
-    en: "Hesler Zacasa", 
-    es: "Hesler Zacasa" 
-  },
-  role1: {
-    en: "Software",
-    es: "Ingeniero"
-  },
-  role2: {
-    en: "Engineer",
-    es: "de Software"
-  },
-  description: { 
-    en: "Software engineer pursuing a Master’s in Business Intelligence and Big Data Analytics. I have expertise in database management, supply chain optimization, ServiceNow implementation and configuration, and web design.", 
-    es: "Ingeniero de software cursando una Maestría en Inteligencia de Negocios y Análisis de Big Data. Tengo experiencia en gestión de bases de datos, optimización de la cadena de suministro, implementación y configuración de ServiceNow, y diseño web." 
-  },
-  availability: {
-    en: "Open to work",
-    es: "Disponible para trabajar"
-  },
-  viewProjects: { 
-    en: "View Projects", 
-    es: "Ver Proyectos" 
-  },
-  getInTouch: { 
-    en: "Get in Touch +", 
-    es: "Contactar +" 
-  },
-  tech: { 
-    en: "Tech Stack", 
-    es: "Tecnologías" 
-  },
-  certifications: {
-    en: "Badges",
-    es: "Insignias"
-  }
+	greeting: {
+		en: "Hello, I'm",
+		es: "Hola, soy",
+	},
+	name: {
+		en: "Hesler Zacasa",
+		es: "Hesler Zacasa",
+	},
+	role1: {
+		en: "Software",
+		es: "Ingeniero",
+	},
+	role2: {
+		en: "Engineer",
+		es: "de Software",
+	},
+	description: {
+		en: "Software engineer pursuing a Master’s in Business Intelligence and Big Data Analytics. I have expertise in database management, supply chain optimization, ServiceNow implementation and configuration, and web design.",
+		es: "Ingeniero de software cursando una Maestría en Inteligencia de Negocios y Análisis de Big Data. Tengo experiencia en gestión de bases de datos, optimización de la cadena de suministro, implementación y configuración de ServiceNow, y diseño web.",
+	},
+	availability: {
+		en: "Open to work",
+		es: "Disponible para trabajar",
+	},
+	viewProjects: {
+		en: "View Projects",
+		es: "Ver Proyectos",
+	},
+	getInTouch: {
+		en: "Get in Touch +",
+		es: "Contactar +",
+	},
+	tech: {
+		en: "Tech Stack",
+		es: "Tecnologías",
+	},
+	certifications: {
+		en: "Badges",
+		es: "Insignias",
+	},
 };
 ---
 
 <Layout title={`Home | Hesler Zacasa`}>
 	<Header />
-	
-	<main class="min-h-screen px-4 sm:px-6 md:px-8 overflow-hidden pt-24 sm:pt-32">
+
+	<main
+		class="min-h-screen px-4 sm:px-6 md:px-8 overflow-hidden pt-24 sm:pt-32"
+	>
 		<section class="max-w-6xl mx-auto flex flex-col pt-8 pb-16 fade-in">
 			<!-- Hero Text & Avatar -->
-			<div class="flex flex-col md:flex-row items-center justify-between gap-12 w-full mb-16">
+			<div
+				class="flex flex-col md:flex-row items-center justify-between gap-12 w-full mb-16"
+			>
 				<!-- Left Content -->
 				<div class="flex flex-col items-start text-left flex-1">
-					<p class="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200 mb-4 flex items-center gap-2">
-                        <span data-en={translations.greeting.en} data-es={translations.greeting.es}>{translations.greeting.en}</span>
-						<span class="font-bold gap-1" data-en={translations.name.en} data-es={translations.name.es}>{translations.name.en} 👋</span>
+					<p
+						class="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200 mb-4 flex items-center gap-2"
+					>
+						<span
+							data-en={translations.greeting.en}
+							data-es={translations.greeting.es}
+							>{translations.greeting.en}</span
+						>
+						<span
+							class="font-bold gap-1"
+							data-en={translations.name.en}
+							data-es={translations.name.es}
+							>{translations.name.en} 👋</span
+						>
 					</p>
-					
-					<h1 class="text-5xl sm:text-7xl md:text-8xl font-extrabold text-gray-900 dark:text-white leading-[1.1] tracking-tight mb-2" data-en={translations.role1.en} data-es={translations.role1.es}>
+
+					<h1
+						class="text-5xl sm:text-7xl md:text-8xl font-extrabold text-gray-900 dark:text-white leading-[1.1] tracking-tight mb-2"
+						data-en={translations.role1.en}
+						data-es={translations.role1.es}
+					>
 						{translations.role1.en}
 					</h1>
-					<h2 class="text-5xl sm:text-7xl md:text-8xl font-extrabold text-[#243e36] dark:text-[#243e36] leading-[1.1] tracking-tight mb-8" style="text-shadow: 0 4px 20px rgb(255, 255, 255);" data-en={translations.role2.en} data-es={translations.role2.es}>
+					<h2
+						class="text-5xl sm:text-7xl md:text-8xl font-extrabold text-[#243e36] dark:text-[#243e36] leading-[1.1] tracking-tight mb-8"
+						style="text-shadow: 0 4px 20px rgb(255, 255, 255);"
+						data-en={translations.role2.en}
+						data-es={translations.role2.es}
+					>
 						{translations.role2.en}
 					</h2>
-					
+
 					<p
 						class="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-xl mb-10 leading-relaxed font-medium"
 						data-en={translations.description.en}
@@ -80,61 +104,186 @@ const translations = {
 						{translations.description.en}
 					</p>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-						<a href="/projects" class="cursor-pointer px-8 py-3.5 text-sm font-bold bg-[#243e36] text-white rounded hover:bg-[#243e36] transition-all uppercase tracking-widest shadow-lg shadow-[#243e36]/40 hover:shadow-xl hover:shadow-[#243e36]/50 hover:-translate-y-0.5" data-en={translations.viewProjects.en} data-es={translations.viewProjects.es}>
+						<a
+							href="/projects"
+							class="cursor-pointer px-8 py-3.5 text-sm font-bold bg-[#243e36] text-white rounded hover:bg-[#243e36] transition-all uppercase tracking-widest shadow-lg shadow-[#243e36]/40 hover:shadow-xl hover:shadow-[#243e36]/50 hover:-translate-y-0.5"
+							data-en={translations.viewProjects.en}
+							data-es={translations.viewProjects.es}
+						>
 							{translations.viewProjects.en}
 						</a>
-						<a href="/contact" class="cursor-pointer px-8 py-3.5 text-sm font-bold bg-[#243e36] text-white rounded hover:bg-[#243e36] transition-all uppercase tracking-widest shadow-lg shadow-[#243e36]/40 hover:shadow-xl hover:shadow-[#243e36]/50 hover:-translate-y-0.5" data-en={translations.getInTouch.en} data-es={translations.getInTouch.es}>
+						<a
+							href="/contact"
+							class="cursor-pointer px-8 py-3.5 text-sm font-bold bg-[#243e36] text-white rounded hover:bg-[#243e36] transition-all uppercase tracking-widest shadow-lg shadow-[#243e36]/40 hover:shadow-xl hover:shadow-[#243e36]/50 hover:-translate-y-0.5"
+							data-en={translations.getInTouch.en}
+							data-es={translations.getInTouch.es}
+						>
 							{translations.getInTouch.en}
 						</a>
 					</div>
 				</div>
 
 				<!-- Right Avatar -->
-				<div class="flex-1 flex justify-center md:justify-end relative w-full max-w-sm md:max-w-md">
-                    <div class="absolute inset-0 bg-[#243e36]/20 dark:bg-[#243e36]/10 blur-3xl rounded-full transform scale-75"></div>
-					<img src={heroAvatar.src} alt="Hesler Zacasa 3D Avatar" class="w-full h-auto object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500 max-h-[500px]" />
+				<div
+					class="flex-1 flex justify-center md:justify-end relative w-full max-w-sm md:max-w-md"
+				>
+					<div
+						class="absolute inset-0 bg-[#243e36]/20 dark:bg-[#243e36]/10 blur-3xl rounded-full transform scale-75"
+					>
+					</div>
+					<img
+						src={heroAvatar.src}
+						alt="Hesler Zacasa 3D Avatar"
+						class="w-full h-auto object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500 max-h-[500px]"
+					/>
 				</div>
 			</div>
-<h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-8" data-en={translations.tech.en} data-es={translations.tech.es}>
+			<h3
+				class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-8"
+				data-en={translations.tech.en}
+				data-es={translations.tech.es}
+			>
 				{translations.tech.en}
 			</h3>
 			<!-- Tech Banner -->
-			<div class="w-full bg-[#243e36] rounded-xl shadow-2xl overflow-hidden relative">
+			<div
+				class="w-full bg-[#243e36] rounded-xl shadow-2xl overflow-hidden relative"
+			>
 				<div class="tech-ticker-container py-6 w-full">
-					<div class="tech-ticker-content flex items-center justify-center text-white/90 font-bold uppercase tracking-widest text-sm">
+					<div
+						class="tech-ticker-content flex items-center justify-center text-white/90 font-bold uppercase tracking-widest text-sm"
+					>
 						<!-- First set -->
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">JavaScript</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">TypeScript</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">React</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Next.js</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Astro</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Tailwind</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Node.js</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">PostgreSQL</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">MongoDB</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Docker</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Java</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">ServiceNow</div>
-						
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							JavaScript
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							TypeScript
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							React
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Next.js
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Astro
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Tailwind
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Node.js
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							PostgreSQL
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							MongoDB
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Docker
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Java
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							ServiceNow
+						</div>
+
 						<!-- Second set for seamless looping -->
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">JavaScript</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">TypeScript</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">React</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Next.js</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Astro</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Tailwind</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Node.js</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">PostgreSQL</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">MongoDB</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Docker</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">Java</div>
-						<div class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity">ServiceNow</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							JavaScript
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							TypeScript
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							React
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Next.js
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Astro
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Tailwind
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Node.js
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							PostgreSQL
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							MongoDB
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Docker
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							Java
+						</div>
+						<div
+							class="px-8 whitespace-nowrap opacity-90 hover:opacity-100 transition-opacity"
+						>
+							ServiceNow
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="max-w-6xl mx-auto py-12 sm:py-16 border-t border-gray-200 dark:border-gray-800 parallax-section fade-in">
+		<section
+			class="max-w-6xl mx-auto py-12 sm:py-16 border-t border-gray-200 dark:border-gray-800 parallax-section fade-in"
+		>
 			<h2
 				class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-8"
 				data-en={translations.certifications.en}
@@ -143,7 +292,9 @@ const translations = {
 				{translations.certifications.en}
 			</h2>
 
-			<div class="flex flex-wrap gap-10 items-center justify-start bg-green-50 dark:bg-gray-800/50 p-8 rounded-2xl border border-gray-100 dark:border-gray-800">
+			<div
+				class="flex flex-wrap gap-10 items-center justify-start bg-green-50 dark:bg-gray-800/50 p-8 rounded-2xl border border-gray-100 dark:border-gray-800"
+			>
 				<img
 					src={badgeHr.src}
 					alt="Certified Implementation Specialist - Human Resources"
@@ -169,31 +320,34 @@ const translations = {
 	<Footer />
 
 	<script>
-		document.addEventListener('DOMContentLoaded', () => {
+		document.addEventListener("DOMContentLoaded", () => {
 			const observerOptions = {
 				root: null,
-				rootMargin: '0px',
-				threshold: 0.1
+				rootMargin: "0px",
+				threshold: 0.1,
 			};
 
 			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
+				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
-						entry.target.classList.add('visible');
+						entry.target.classList.add("visible");
 					}
 				});
 			}, observerOptions);
 
-			document.querySelectorAll('.fade-in').forEach(el => {
+			document.querySelectorAll(".fade-in").forEach((el) => {
 				observer.observe(el);
 			});
 
-			window.addEventListener('scroll', () => {
+			window.addEventListener("scroll", () => {
 				const scrolled = window.scrollY;
-				document.querySelectorAll('.parallax-section').forEach(section => {
-					const speed = 0.05;
-					(section as HTMLElement).style.transform = `translateY(${scrolled * speed}px)`;
-				});
+				document
+					.querySelectorAll(".parallax-section")
+					.forEach((section) => {
+						const speed = 0.05;
+						(section as HTMLElement).style.transform =
+							`translateY(${scrolled * speed}px)`;
+					});
 			});
 		});
 	</script>
@@ -204,14 +358,26 @@ const translations = {
 		width: 100%;
 		overflow: hidden;
 		display: flex;
-        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 10%,
+			black 90%,
+			transparent
+		);
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 10%,
+			black 90%,
+			transparent
+		);
 	}
-	
+
 	.tech-ticker-content {
 		display: flex;
 		animation: scroll 40s linear infinite;
-        width: max-content;
+		width: max-content;
 	}
 
 	.tech-ticker-content:hover {

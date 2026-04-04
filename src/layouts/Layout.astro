@@ -117,13 +117,9 @@ import '../styles/global.css';
 					currentLang = currentLang === 'en' ? 'es' : 'en';
 					document.documentElement.setAttribute('data-lang', currentLang);
 					localStorage.setItem('lang', currentLang);
-					window.updatePageContent();
 					
-					// Ocultar overlay después de 500ms
-					overlay.classList.add('hidden');
-					setTimeout(() => {
-						overlay.remove();
-					}, 300);
+					// Recargar la página para asegurar que todas las traducciones y animaciones (como GSAP) se apliquen correctamente
+					window.location.reload();
 				}, 1000);
 			};
 

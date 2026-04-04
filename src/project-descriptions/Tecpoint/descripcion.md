@@ -1,4 +1,4 @@
-# Tecpoint: E-Commerce
+# Tecpoint: Tienda de Comercio Electrónico
 Creación de una plataforma responsiva y fácil de usar optimizada para el rendimiento y la escalabilidad. El sitio se personalizó con temas y complementos personalizados para respaldar la funcionalidad de comercio electrónico, transacciones seguras y gestión eficiente de productos.
 
 ## Stack

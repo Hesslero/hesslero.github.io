@@ -6,6 +6,8 @@ import heroAvatar from "../assets/hero-avatar.png";
 import badgeHr from "../assets/badges/Credential_Badge_-_Certified_Implementation_Specialist_-_Human_Resources.png";
 import badgeAdmin from "../assets/badges/Credential_Badge_-_Certified_System_Administrator.png";
 import badgeSFC from "../assets/badges/badge-SFC.png";
+import badgeIPD from "../assets/badges/certified-implementation-specialist-data-foundation.png";
+import badgeSuiteDF from "../assets/badges/suite-certification-data-foundations-cmdb-and-csdm.png";
 
 const translations = {
 	greeting: {
@@ -88,7 +90,7 @@ const translations = {
 						{translations.role1.en}
 					</h1>
 					<h2
-						class="split text-5xl sm:text-7xl md:text-8xl font-extrabold text-[#243e36] dark:text-[#243e36] leading-[1.3ttt] py-2 tracking-tight mb-8"
+						class="split text-5xl sm:text-7xl md:text-8xl font-extrabold text-[#243e36] dark:text-[#243e36] leading-[1.3] py-2 tracking-tight mb-8"
 						style="text-shadow: 0 4px 20px rgb(255, 255, 255);"
 						data-en={translations.role2.en}
 						data-es={translations.role2.es}
@@ -313,6 +315,18 @@ const translations = {
 					class="h-28 sm:h-36 md:h-40 object-contain drop-shadow-md hover:scale-105 transition-transform opacity-75 hover:opacity-100"
 					loading="lazy"
 				/>
+				<img
+					src={badgeIPD.src}
+					alt="Certified Implementation Specialist - Data Foundations"
+					class="h-28 sm:h-36 md:h-40 object-contain drop-shadow-md hover:scale-105 transition-transform"
+					loading="lazy"
+				/>
+				<img
+					src={badgeSuiteDF.src}
+					alt="Suite Certification - Data Foundations, CMDB and CSDM"
+					class="h-28 sm:h-36 md:h-40 object-contain drop-shadow-md hover:scale-105 transition-transform"
+					loading="lazy"
+				/>
 			</div>
 		</section>
 	</main>
@@ -321,39 +335,22 @@ const translations = {
 
 	<script>
 		import { gsap } from "gsap";
-		import { SplitText } from "gsap/SplitText";
-
-		gsap.registerPlugin(SplitText);
 
 		const initAnimations = () => {
-			// Un-split manually before animating to ensure a clean state
-			document.querySelectorAll(".split").forEach(el => {
-				if (el.children.length > 0) {
-					el.innerHTML = el.textContent || '';
+			gsap.killTweensOf(".split");
+			gsap.fromTo(
+				".split",
+				{ y: 48, autoAlpha: 0 },
+				{
+					y: 0,
+					autoAlpha: 1,
+					duration: 0.9,
+					stagger: 0.12,
+					ease: "power3.out",
+					clearProps: "transform,opacity,visibility"
 				}
-			});
+			);
 
-			// Small delay to allow the DOM to digest raw text
-			setTimeout(() => {
-				SplitText.create(".split", {
-					type: "lines, chars",
-					mask: "lines",
-					autoSplit: true,
-					onSplit(self) {
-						return gsap.from(self.chars, {
-							duration: 1,
-							y: 100,
-							autoAlpha: 0,
-							stagger: {
-								amount: 0.5,
-								from: "random",
-							}
-						});
-					},
-				});
-			}, 50);
-
-			// Original IntersectionObserver functionality
 			const observerOptions = {
 				root: null,
 				rootMargin: "0px",
@@ -384,26 +381,16 @@ const translations = {
 			});
 		};
 
-		// Hook into the translation logic so we can cleanly re-animate texts on language change
 		if (typeof window !== 'undefined') {
 			const originalUpdate = window.updatePageContent;
 			if (originalUpdate) {
 				window.updatePageContent = function() {
-					// 1. Strip SplitText tags to raw text before translation fires
-					document.querySelectorAll(".split").forEach(el => {
-						if (el.children.length > 0) el.innerHTML = el.textContent || '';
-					});
-					
-					// 2. Perform regular translation
 					originalUpdate();
-
-					// 3. Re-run SplitText animations with the new text
 					initAnimations();
 				};
 			}
 		}
 
-		// In Astro, module scripts are deferred by default, meaning the DOM is ready when this runs.
 		initAnimations();
 		document.addEventListener("astro:page-load", initAnimations);
 	</script>

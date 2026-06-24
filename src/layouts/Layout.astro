@@ -5,17 +5,13 @@ interface Props {
 
 const { title } = Astro.props;
 
-
-const theme = Astro.cookies.get('theme')?.value || 'light';
-const isDark = theme === 'dark';
-
 import '../styles/global.css';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 ---
 
 <!doctype html>
-<html lang="es" class={isDark ? 'dark' : ''}>
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<Analytics />
@@ -95,8 +91,6 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 				const isDark = document.documentElement.classList.toggle('dark');
 				const theme = isDark ? 'dark' : 'light';
 				localStorage.setItem('theme', theme);
-				// Also set a cookie so the server knows the theme on next request
-				document.cookie = `theme=${theme}; path=/; max-age=31536000`;
 			};
 
 			window.toggleLang = () => {

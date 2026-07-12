@@ -74,126 +74,136 @@ const translations = {
 	title: { en: 'Projects', es: 'Proyectos' },
 	description: { en: 'A collection of projects showcasing my skills in development.', es: 'Una colección de proyectos que muestran mis habilidades en desarrollo.' },
     inDevelopment: { en: 'In Development', es: 'En desarrollo' },
-    customSoftware: { en: 'Custom Software', es: 'Software a medida' }
+    customSoftware: { en: 'Custom Software', es: 'Software a medida' },
+    viewDetails: { en: 'View Details', es: 'Ver Detalles' }
 };
 ---
 
 <Layout title={`Projects | Hesler Zacasa`}>
 	<Header />
 	
-	<main class="bg-white dark:bg-gray-950 overflow-x-hidden">
+	<main class="bg-white dark:bg-gray-950 min-h-screen pb-32">
 		<!-- Introduction Header -->
-		<section class="max-w-5xl mx-auto min-h-[50vh] flex flex-col justify-end pt-32 pb-16 px-6 sm:px-8">
+		<section class="max-w-6xl mx-auto pt-32 pb-16 px-6 sm:px-8">
 			<div class="max-w-2xl fade-in">
-				<p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 mb-3 sm:mb-4 tracking-wider uppercase" data-en={translations.subtitle.en} data-es={translations.subtitle.es}>{translations.subtitle.en}</p>
-				<h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white" data-en={translations.title.en} data-es={translations.title.es}>
+				<p class="text-xs sm:text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 sm:mb-4 tracking-wider uppercase" data-en={translations.subtitle.en} data-es={translations.subtitle.es}>{translations.subtitle.en}</p>
+				<h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight" data-en={translations.title.en} data-es={translations.title.es}>
 					{translations.title.en}
 				</h1>
-				<p class="mt-4 sm:mt-6 text-base sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed" data-en={translations.description.en} data-es={translations.description.es}>
+				<p class="mt-4 sm:mt-6 text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-medium" data-en={translations.description.en} data-es={translations.description.es}>
 					{translations.description.en}
 				</p>
 			</div>
 		</section>
 
-		<!-- GSAP Horizontal Scroll Section -->
-		<section class="scroll-container relative w-full h-screen bg-gray-50 dark:bg-gray-950 flex shadow-inner">
-			<div class="horizontal-track flex flex-nowrap h-full items-center pl-[5vw] pr-[20vw] gap-12 sm:gap-20 w-max">
-				
-				{projects.map((project) => (
-					<div class="project-wrapper relative flex shrink-0 h-[75vh] sm:h-[80vh] items-end" style={`width: calc(var(--card-width) + (var(--card-width) * ${project.images.length - 1}))`} data-images={project.images.length}>
-					<article class="project-card relative w-[var(--card-width)] h-full rounded-[2.5rem] overflow-hidden group flex items-end shadow-2xl border border-gray-200/20 dark:border-gray-800/50">
-						<!-- Background Image Layers con Fade In Stacking -->
-						{project.images.map((img, i) => (
-							<div class={`img-layer absolute inset-0 overflow-hidden rounded-[2.5rem] ${i === 0 ? 'z-0' : 'z-10'}`} style={`opacity: ${i === 0 ? 1 : 0};`}>
-								<img src={img} alt={project.esData.title} class="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-[1500ms] ease-out" loading="lazy" />
-							</div>
-						))}
-						<div class="absolute inset-0 bg-gray-950/60 backdrop-blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out z-[15] rounded-[2.5rem]"></div>
-
-						{/* Status Badges - Top Left */}
-						{(project.slug === 'HeyFood' || project.slug === 'MINIPOS') && (
-							<div class="absolute top-6 left-6 md:top-8 md:left-10 z-20">
-								<div class="px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-widest text-white shadow-lg">
-									{project.slug === 'HeyFood' && (
-										<>
-											<span class="locale-es">{translations.inDevelopment.es}</span>
-											<span class="locale-en">{translations.inDevelopment.en}</span>
-										</>
-									)}
-									{project.slug === 'MINIPOS' && (
-										<>
-											<span class="locale-es">{translations.customSoftware.es}</span>
-											<span class="locale-en">{translations.customSoftware.en}</span>
-										</>
+		<!-- Project Stories Section -->
+		<section class="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col gap-24 sm:gap-32 md:gap-40">
+			{projects.map((project, idx) => {
+				const isEven = idx % 2 === 0;
+				return (
+					<div class={`project-row flex flex-col lg:flex-row items-center gap-10 lg:gap-16 w-full ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+						{/* Image Column */}
+						{project.images.length > 0 && (
+							<div class="project-img-wrapper flex-1 w-full lg:w-1/2">
+								<div class="relative overflow-hidden rounded-[2.5rem] border border-gray-200/60 dark:border-gray-800/80 bg-gray-50 dark:bg-gray-950 shadow-xl aspect-[16/10] group">
+									<img 
+										src={project.images[0]} 
+										alt={project.esData.title} 
+										class="w-full h-full object-cover object-top transform scale-100 group-hover:scale-[1.03] transition-transform duration-[1200ms] ease-out" 
+										loading="lazy" 
+									/>
+									
+									{/* Status Badges overlaying the image */}
+									{(project.slug === 'HeyFood' || project.slug === 'MINIPOS' || project.slug === 'Spiritual Journey' || project.slug === 'SAIF') && (
+										<div class="absolute top-6 left-6 z-10">
+											<div class="px-4 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
+												{project.slug === 'HeyFood' && (
+													<>
+														<span class="locale-es">{translations.inDevelopment.es}</span>
+														<span class="locale-en">{translations.inDevelopment.en}</span>
+													</>
+												)}
+												{project.slug === 'MINIPOS' && (
+													<>
+														<span class="locale-es">{translations.customSoftware.es}</span>
+														<span class="locale-en">{translations.customSoftware.en}</span>
+													</>
+												)}
+												{project.slug === 'SAIF' && (
+													<>
+														<span class="locale-es">Sistema Administrativo</span>
+														<span class="locale-en">Admin System</span>
+													</>
+												)}
+												{project.slug === 'Spiritual Journey' && (
+													<>
+														<span class="locale-es">Proyecto Personal</span>
+														<span class="locale-en">Personal Project</span>
+													</>
+												)}
+											</div>
+										</div>
 									)}
 								</div>
 							</div>
 						)}
 
-						<!-- Content Block over the Image (Appears on Hover) -->
-						<div class="content-block relative z-30 w-full h-full p-8 sm:p-12 md:p-16 flex flex-col justify-end opacity-0 translate-y-12 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-out delay-[50ms] pointer-events-none group-hover:pointer-events-auto">
-							<div class="max-w-4xl">
-								<h3 class="card-title text-3xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 sm:mb-6 drop-shadow-lg tracking-tight leading-tight">
-									<span class="locale-es">{project.esData.title}</span>
-									<span class="locale-en">{project.enData.title}</span>
-								</h3>
-								
-								<p class="card-desc text-base sm:text-xl text-gray-200 mb-8 sm:mb-10 leading-relaxed font-medium drop-shadow-md max-w-2xl">
-									<span class="locale-es">{project.esData.summary}</span>
-									<span class="locale-en">{project.enData.summary}</span>
-								</p>
-								
-								<!-- Stack -->
-								<div class="card-staggers flex flex-wrap gap-3 mb-10">
-									{project.esData.stack.map((tech) => (
-										<span class="stack-item px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-sm cursor-default transition-all duration-300 hover:bg-white/20">
-											{tech}
-										</span>
-									))}
-								</div>
+						{/* Info Column */}
+						<div class="project-info-wrapper flex-1 w-full lg:w-1/2 flex flex-col justify-center">
+							<h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-4 leading-tight">
+								<span class="locale-es">{project.esData.title}</span>
+								<span class="locale-en">{project.enData.title}</span>
+							</h3>
+							
+							<p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed font-medium">
+								<span class="locale-es">{project.esData.summary}</span>
+								<span class="locale-en">{project.enData.summary}</span>
+							</p>
 
-								<!-- Links -->
-								{project.esData.links.length > 0 && project.esData.links[0].label !== 'Privado' && project.esData.links[0].label !== 'Private' && (
-									<div class="card-staggers flex flex-wrap gap-6 mt-auto">
-										{project.esData.links.map((link, j) => (
-											link.url ? (
-												<a href={link.url} target="_blank" rel="noopener noreferrer" class="stack-item text-sm font-bold text-white hover:text-green-400 transition-colors flex items-center gap-2 uppercase tracking-widest group bg-white/5 px-6 py-3 rounded-full border border-white/10 hover:border-green-400/50 backdrop-blur-sm">
-													<span class="locale-es">{link.label}</span>
-													<span class="locale-en">{project.enData.links[j]?.label || link.label}</span>
-													<svg class="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-													</svg>
-												</a>
-											) : (
-												<span class="stack-item text-sm font-bold text-gray-400 uppercase tracking-widest px-6 py-3 rounded-full border border-gray-700/50 bg-gray-900/40 backdrop-blur-sm">
-													<span class="locale-es">{link.label}</span>
-													<span class="locale-en">{project.enData.links[j]?.label || link.label}</span>
-												</span>
-											)
-										))}
-									</div>
+							<!-- Stack Badges -->
+							<div class="flex flex-wrap gap-2 mb-8">
+								{project.esData.stack.map((tech) => (
+									<span class="px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full bg-gray-100 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 border border-gray-200/40 dark:border-gray-700/40 shadow-sm cursor-default hover:bg-gray-205 dark:hover:bg-gray-700 transition-all">
+										{tech}
+									</span>
+								))}
+							</div>
+
+							<!-- Action Buttons -->
+							<div class="flex items-center gap-4">
+								{/* Link to detail page */}
+								<a 
+									href={`/projects/${project.slug}`} 
+									class="px-6 py-3 text-xs font-bold text-white bg-[#243e36] hover:bg-[#2d4940] rounded-full transition-all flex items-center gap-1.5 shadow-lg shadow-[#243e36]/30 hover:scale-105 active:scale-95 duration-300 cursor-pointer"
+								>
+									<span class="locale-es">{translations.viewDetails.es}</span>
+									<span class="locale-en">{translations.viewDetails.en}</span>
+									<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+									</svg>
+								</a>
+
+								{/* Direct site link if available and not Private */}
+								{project.esData.links.length > 0 && project.esData.links[0].label !== 'Privado' && project.esData.links[0].label !== 'Private' && project.esData.links[0].url && (
+									<a 
+										href={project.esData.links[0].url} 
+										target="_blank" 
+										rel="noopener noreferrer" 
+										class="px-6 py-3 text-xs font-bold text-gray-700 dark:text-white/90 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 border border-gray-200 dark:border-white/20 rounded-full transition-all flex items-center gap-1.5 backdrop-blur-sm hover:scale-105 active:scale-95 duration-300 cursor-pointer"
+									>
+										<span class="locale-es">{project.esData.links[0].label}</span>
+										<span class="locale-en">{project.enData.links[0]?.label || project.esData.links[0].label}</span>
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+										</svg>
+									</a>
 								)}
 							</div>
 						</div>
-					</article>
 					</div>
-				))}
-			</div>
-
-			<!-- Fixed Navigation Overlay -->
-			<div class="nav-overlay fixed bottom-6 right-6 md:bottom-12 md:right-12 z-50 flex gap-4 opacity-0 pointer-events-none transition-opacity duration-500">
-				<button id="prev-btn" class="w-14 h-14 rounded-full bg-black/50 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center hover:bg-black/70 dark:hover:bg-white/20 transition-all shadow-2xl hover:scale-105 active:scale-95 disabled:opacity-30 disabled:pointer-events-none">
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg>
-				</button>
-				<button id="next-btn" class="w-14 h-14 rounded-full bg-black/50 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center hover:bg-black/70 dark:hover:bg-white/20 transition-all shadow-2xl hover:scale-105 active:scale-95 disabled:opacity-30 disabled:pointer-events-none">
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
-				</button>
-			</div>
-
+				);
+			})}
 		</section>
-
-		<!-- Dummy section to allow scrolling past horizontal block seamlessly -->
-		<section class="h-[20vh] bg-white dark:bg-gray-950"></section>
 	</main>
 
 	<Footer />
@@ -201,13 +211,11 @@ const translations = {
 	<script>
 		import { gsap } from "gsap";
 		import { ScrollTrigger } from "gsap/ScrollTrigger";
-		import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-		// Force register plugins
-		gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+		gsap.registerPlugin(ScrollTrigger);
 
-		document.addEventListener('DOMContentLoaded', () => {
-			// Intro Header Observers
+		const initAnimations = () => {
+			// Intro Header intersection observer
 			const observerOptions = {
 				root: null,
 				rootMargin: '0px',
@@ -223,179 +231,72 @@ const translations = {
 			document.querySelectorAll('.fade-in').forEach(el => {
 				observer.observe(el);
 			});
-		});
 
-		// Setup Horizontal Scroll Mechanics
-		const initHorizontalScroll = () => {
-			const container = document.querySelector('.scroll-container') as HTMLElement;
-			const track = document.querySelector('.horizontal-track') as HTMLElement;
-			const cards = gsap.utils.toArray('.project-card') as HTMLElement[];
-			
-			if (!container || !track || cards.length === 0) return;
+			// GSAP ScrollTrigger animations for project rows
+			const rows = document.querySelectorAll('.project-row');
+			rows.forEach((row, idx) => {
+				const isEven = idx % 2 === 0;
+				const imgWrapper = row.querySelector('.project-img-wrapper');
+				const infoWrapper = row.querySelector('.project-info-wrapper');
 
-			// Add mobile responsive touch handlers 
-			cards.forEach(card => {
-				card.addEventListener('click', (e) => {
-					// Don't intercept clicks on actual links/buttons inside the card
-					if ((e.target as HTMLElement).closest('a, button')) return;
-					
-					const isActive = card.classList.contains('mobile-active');
-					// Turn off all other cards
-					cards.forEach(c => c.classList.remove('mobile-active'));
-					// Toggle this one
-					if (!isActive) card.classList.add('mobile-active');
-				});
-			});
+				if (imgWrapper) {
+					gsap.fromTo(imgWrapper,
+						{
+							x: isEven ? 80 : -80,
+							opacity: 0,
+							scale: 0.95
+						},
+						{
+							x: 0,
+							opacity: 1,
+							scale: 1,
+							duration: 1.2,
+							ease: "power4.out",
+							scrollTrigger: {
+								trigger: row,
+								start: "top 82%",
+								toggleActions: "play none none none"
+							}
+						}
+					);
+				}
 
-			// How far we need to translate the track to reach the end
-			const getScrollAmount = () => -(track.scrollWidth - window.innerWidth);
-
-			// Main Horizontal Tween
-			const scrollTween = gsap.to(track, {
-				x: getScrollAmount,
-				ease: "none",
-				scrollTrigger: {
-					trigger: container,
-					pin: true,
-					scrub: 1, // Smooth modern scrub
-					invalidateOnRefresh: true, // Recalculate on resize
-					start: "top top", // When top of container hits top of viewport
-					end: () => `+=${track.scrollWidth - window.innerWidth}`,
-					onEnter: () => gsap.to('.nav-overlay', { autoAlpha: 1, pointerEvents: 'auto' }),
-					onLeave: () => gsap.to('.nav-overlay', { autoAlpha: 0, pointerEvents: 'none' }),
-					onEnterBack: () => gsap.to('.nav-overlay', { autoAlpha: 1, pointerEvents: 'auto' }),
-					onLeaveBack: () => gsap.to('.nav-overlay', { autoAlpha: 0, pointerEvents: 'none' })
+				if (infoWrapper) {
+					const children = Array.from(infoWrapper.children);
+					gsap.fromTo(children,
+						{
+							y: 35,
+							opacity: 0
+						},
+						{
+							y: 0,
+							opacity: 1,
+							duration: 0.8,
+							stagger: 0.12,
+							ease: "power3.out",
+							scrollTrigger: {
+								trigger: row,
+								start: "top 82%",
+								toggleActions: "play none none none"
+							}
+						}
+					);
 				}
 			});
-
-			let cardTriggers: any[] = [];
-
-			// Fake Pinning and Stacking logic for multiple images
-			const wrappers = gsap.utils.toArray('.project-wrapper') as HTMLElement[];
-			
-			wrappers.forEach((wrapper: HTMLElement) => {
-				const card = wrapper.querySelector('.project-card');
-				const images = Array.from(wrapper.querySelectorAll('.img-layer'));
-				if (!card || images.length <= 1) return;
-
-				const wrapperWidth = wrapper.offsetWidth;
-				const cardWidth = (card as HTMLElement).offsetWidth;
-				const travelDistance = wrapperWidth - cardWidth;
-
-				const pinTl = gsap.timeline({
-					scrollTrigger: {
-						trigger: wrapper,
-						containerAnimation: scrollTween,
-						start: "left left+=5vw", // Pin visually when card matches the track padding
-						end: () => "+=" + travelDistance, 
-						scrub: true
-					}
-				});
-
-				// Fake the pin by moving the card right at the same rate the wrapper moves left
-				pinTl.to(card, {
-					x: travelDistance,
-					ease: "none",
-					duration: images.length - 1
-				}, 0);
-
-				// Sequentially fade in subsequent images
-				images.forEach((img: any, idx: number) => {
-					if (idx === 0) return;
-					pinTl.to(img, {
-						opacity: 1,
-						duration: 1, // timeline relative duration
-						ease: "none"
-					}, idx - 1); // start exactly matching the wrapper segments
-				});
-			});
-
-			// Setup interactive Navigation helper using dynamic offsetLeft computations
-			let currentWrapperIndex = 0;
-			const nextBtn = document.getElementById('next-btn') as HTMLButtonElement | null;
-			const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement | null;
-
-			const updateButtons = () => {
-				if(prevBtn) prevBtn.disabled = currentWrapperIndex === 0;
-				if(nextBtn) nextBtn.disabled = currentWrapperIndex === wrappers.length - 1;
-			};
-
-			const scrollToWrapper = (index: number) => {
-				if (index < 0 || index >= wrappers.length) return;
-				currentWrapperIndex = index;
-				
-				const st = scrollTween.scrollTrigger;
-				if (!st) return;
-				
-				// Calculate exact pixel offset.
-				const targetWrapper = wrappers[index];
-				const targetPos = st.start + targetWrapper.offsetLeft - (window.innerWidth * 0.05);
-				
-				gsap.to(window, {
-					scrollTo: targetPos,
-					duration: 1.2, 
-					ease: "power3.inOut"
-				});
-
-				updateButtons();
-			};
-
-			nextBtn?.addEventListener('click', () => scrollToWrapper(currentWrapperIndex + 1));
-			prevBtn?.addEventListener('click', () => scrollToWrapper(currentWrapperIndex - 1));
-
-			// Recalculate index when scrolling manually
-			ScrollTrigger.addEventListener("scrollEnd", () => {
-				const currentScroll = window.scrollY - (scrollTween.scrollTrigger?.start || 0);
-				let closest = 0;
-				let minDiff = Infinity;
-				wrappers.forEach((w, i) => {
-					const diff = Math.abs(w.offsetLeft - (window.innerWidth * 0.05) - currentScroll);
-					if (diff < minDiff) { minDiff = diff; closest = i; }
-				});
-				currentWrapperIndex = closest;
-				updateButtons();
-			});
-			
-			updateButtons();
 		};
 
-		// Safely boot GSAP components in Astro
-		initHorizontalScroll();
+		// Run animations on initial load
+		initAnimations();
+		
+		// Run animations on Astro client routing transitions
 		document.addEventListener("astro:page-load", () => {
-            // Unmount and rebuild on page navigations
-            ScrollTrigger.getAll().forEach(t => t.kill());
-            initHorizontalScroll();
-        });
+			// Clean up old ScrollTriggers to prevent leaks
+			ScrollTrigger.getAll().forEach(t => t.kill());
+			initAnimations();
+		});
 	</script>
 </Layout>
 
 <style>
 	@reference "../styles/global.css";
-
-	.project-wrapper {
-		--card-width: 90vw;
-	}
-	@media (min-width: 768px) {
-		.project-wrapper {
-			--card-width: 90vw;
-		}
-	}
-	@media (min-width: 1024px) {
-		.project-wrapper {
-			--card-width: 90vw;
-		}
-	}
-
-	/* Mobile interactive hover equivalents */
-	.project-card.mobile-active .bg-gray-950\/60 {
-		opacity: 1 !important;
-	}
-	.project-card.mobile-active .content-block {
-		opacity: 1 !important;
-		transform: translateY(0) !important;
-		pointer-events: auto !important;
-	}
-	.project-card.mobile-active .img-layer img {
-		transform: scale(1.05) !important;
-	}
 </style>
